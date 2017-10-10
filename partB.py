@@ -7,9 +7,19 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 url = input("Enter url: ")
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, "html.parser")
+x = 0
+count = int(input("Enter count: "))
+pos = int(input("Enter position: "))
+print("Retriving: " + url)
+while x < count:
+	html = urllib.request.urlopen(url, context=ctx).read()
+	soup = BeautifulSoup(html, "html.parser")
+	num = []
+	tags = soup("a")
+	for tag in tags:
+		num.append(tag.get('href', None))
+	url = num[pos-1]
+	print("Retrieving: " + url)
+	x+=1
 
-tags = soup("a")
-for tag in tags:
-	print(tag.get('href', None))
+
