@@ -14,5 +14,6 @@ tags = soup('span')
 nums = []
 for tag in tags:
 	nums.append(int((tag.contents[0])))
-print(sum(nums))
+print("Count " + str(len(nums)))
+print("Sum " + str(sum(nums)))
 	
